@@ -1,10 +1,10 @@
-const { } = require('../../lib/note')
-const { note } = require('../../db/db.json')
+const { createNewNote } = require('../../lib/note')
+const { notes } = require('../../database/db')
 const router = require('express').Router();
+console.log(notes)
 
 router.get('/notes', (req, res) => {
-    const result = note;
-    console.log(result)
+    const result = notes;
     if(result) {
         res.json(result);
     } else {
@@ -12,14 +12,9 @@ router.get('/notes', (req, res) => {
     }    
 })
 
-/*router.post('/animals', (req, res) => {
-    req.body.id = animals.length.toString();
-    if(!validateAnimal(req.body)) {
-        res.status(400).send('The Animal is not properly formatted');
-    } else {
-        const animal = createNewAnimal(req.body, animals);
-        res.json(animal);
-    }
-});*/
+router.post('/notes', (req, res) => {
+        const note = createNewNote(req.body, notes);
+        res.json(note);
+});
 
 module.exports = router

@@ -1,5 +1,5 @@
 const express = require('express');
-const { notes } = require('./db/db');
+const { notes } = require('./database/db');
 const path = require('path')
 const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes')
